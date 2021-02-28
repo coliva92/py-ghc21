@@ -14,14 +14,13 @@ VERSION = '0.0.00'
 # return (str, str):  las rutas proveidas como argumentos del programa
 def get_args(name, 
              year):
-  desc = f"""El programa para competir en Google Hash Code {year}, programado 
-    con py-ghc versión {VERSION}. El problema de este año se llama \'{name}\'"""
+  desc = f"""Program for competing in Google Hash Code {year}, programmed 
+         using py-ghc version {VERSION}. This year's problem is \'{name}\'"""
   parser = ArgumentParser(prog='ghc', description=desc)
-  info = """Ruta completa del archivo de texto que contiene los datos de 
-    entrada"""
+  info = """Path for the text file containing the problem's input data"""
   parser.add_argument('input', help=info)
-  info = """Ruta completa del archivo de texto donde se almacenarán los datos 
-    de salida"""
+  info = """Path for the text file where the problem's output data will be 
+         stored"""
   parser.add_argument('output', help=info)
   args = parser.parse_args()
   return args.input, args.output
