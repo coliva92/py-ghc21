@@ -30,14 +30,28 @@ def get_in_edges_for_every_vertex(G):
 
 
 
-def create_schedule_with_stop_signs_only(intersections):
+def create_street_usage_histogram(cars):
+  histogram = {}
+  for car in cars:
+    for street_name in car['travel_streets']:
+      if street_name in histogram: histogram[street_name] += 1
+      else: histogram[street_name] = 1
+  return histogram
+
+
+
+def create_schedule_with_stop_signs_only(intersections, histogram):
   schedule = {
-    'num_inter': len(intersections),
+    'num_inter': 0,
     'intersections': []
   }
   for i in intersections.keys():
-    schedule['intersections'].append(_create_inter_schedule(i, 
-                                                            intersections[i]))
+    inter_schedule = _create_inter_schedule(i, 
+                                            intersections[i],
+                                            histogram)
+    if inter_schedule['num_streets'] > 0:
+      schedule['num_inter'] += 1
+      schedule['intersections'].append(inter_schedule)
   return schedule
 
 
@@ -59,15 +73,18 @@ def write_output_file(filename,
 
 
 def _create_inter_schedule(idx, 
-                           in_streets):
+                           in_streets,
+                           histogram):
   schedule = {
     'id': idx,
-    'num_streets': len(in_streets),
+    'num_streets': 0,
     'streets': []
   }
   for street_name in in_streets:
-    schedule['streets'].append({ 
-      'name': street_name,
-      'time_on_green': 1
-    })
+    if street_name in histogram:
+      schedule['num_streets'] += 1
+      schedule['streets'].append({ 
+        'name': street_name,
+        'time_on_green': 1
+      })
   return schedule

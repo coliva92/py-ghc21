@@ -39,5 +39,6 @@ if __name__ == '__main__':
   in_data = ghc.read_input_file(in_filename, in_desc)
   G = cmp.to_networkx_graph(in_data['streets'])
   intersections = cmp.get_in_edges_for_every_vertex(G)
-  out_data = cmp.create_schedule_with_stop_signs_only(intersections)
+  histogram = cmp.create_street_usage_histogram(in_data['cars'])
+  out_data = cmp.create_schedule_with_stop_signs_only(intersections, histogram)
   cmp.write_output_file(out_filename, out_data)
