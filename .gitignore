@@ -1,1 +1,5 @@
 *.pyc
+.vscode/*
+*_output.txt
+*.out
+*.zip
