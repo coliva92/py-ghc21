@@ -1,0 +1,5 @@
+The submission scored 680,987 points. This is the sum of 394,500 bonus points for cars arriving before the deadline (500 points each) and 286,487 points for early arrival times.
+
+789 of 1,000 cars arrived before the deadline (79%). The earliest car arrived at its destination after 18 seconds scoring 1,158 points, whereas the last car arrived at its destination after 659 seconds scoring 517 points. Cars that arrived within the deadline drove for an average of 312.90 seconds to arrive at their destination.
+
+The schedules for the 500 traffic lights had an average total cycle length of 1.93 seconds. A traffic light that turned green was scheduled to stay green for 1.00 seconds on average.
